@@ -1,18 +1,21 @@
+const API_KEY = process.env.REACT_APP_API_KEY;
 export default async function getLink(link) {
-  const API_KEY = process.env.REACT_APP_API_KEY;
-  // This is the API call to short.io
-  const options = {
-    method: 'POST', // The method is POST
-    headers: {
-      accept: 'application/json',
-      'content-type': 'application/json',
-      Authorization: API_KEY,
-      mode: 'cors',
-    },
-    body: JSON.stringify({domain: 'c0c1.short.gy', originalURL: link}),
-  };
+
+const url = 'https://url-shortener-service.p.rapidapi.com/shorten';
+const options = {
+	method: 'POST',
+	headers: {
+		'content-type': 'application/x-www-form-urlencoded',
+		'X-RapidAPI-Key': API_KEY,
+		'X-RapidAPI-Host': 'url-shortener-service.p.rapidapi.com'
+	},
+  mode: 'cors',
+	body: new URLSearchParams({
+		url: 'https://google.com/'
+	})
+};
   
-  const response = await fetch('https://api.short.io/links', options)
+  const response = await fetch(url, options)
     .then(response => response.json())
     .catch(err => console.error(err));
   
