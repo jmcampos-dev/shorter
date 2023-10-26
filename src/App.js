@@ -41,7 +41,7 @@ function App() {
     // const ourURL = `https://api.shrtco.de/v2/shorten`;
     const shortenedLink = await getLink(formatStr);
     setLoading(false);
-    setLink(shortenedLink.result_url);
+    setLink(shortenedLink);
   };
 
   const copyToClipoard = () => {
