@@ -10,11 +10,9 @@ export default async function getLink(link) {
     },
     body: JSON.stringify({domain: 'c0c1.short.gy', originalURL: link})
   };
-  console.log(process.env.REACT_APP_API_KEY);
   
   const response = await fetch('https://api.short.io/links', options)
     .then(response => response.json())
     .catch(err => console.error(err));
-  console.log(response);
   return response;
 }
