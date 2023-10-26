@@ -15,5 +15,6 @@ export default async function getLink(link) {
   const response = await fetch('https://api.short.io/links', options)
     .then(response => response.json())
     .catch(err => console.error(err));
+  
   return response;
 }
