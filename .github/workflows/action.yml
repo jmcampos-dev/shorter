@@ -11,6 +11,9 @@ jobs:
   build:
 
     runs-on: self-hosted
+
+    env:
+      REACT_APP_API_KEY: ${{ secrets.REACT_APP_API_KEY }}
  
     strategy:
       matrix:
@@ -28,4 +31,5 @@ jobs:
     - run: npm test
     - run: npm run build
     - run: rsync -av build/ ../../../../build
+    - run: 'echo "REACT_APP_API_KEY=\"$REACT_APP_API_KEY\"" > ../../../../build/.env'
    
