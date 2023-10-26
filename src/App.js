@@ -38,10 +38,10 @@ function App() {
 
   const getShortLink = async () => {
     const formatStr = input.toString().toLowerCase().trim();
-    const ourURL = `https://api.shrtco.de/v2/shorten`;
-    const shortenedLink = await getLink(ourURL, formatStr);
+    // const ourURL = `https://api.shrtco.de/v2/shorten`;
+    const shortenedLink = await getLink(formatStr);
     setLoading(false);
-    setLink(shortenedLink.data.result.full_short_link);
+    setLink(shortenedLink.secureShortURL);
   };
 
   const copyToClipoard = () => {

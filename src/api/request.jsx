@@ -1,15 +1,20 @@
-import axios from "axios";
-
-export default async function getLink(linkUrl, link) {
-  try {
-    const linkFormatter = `${linkUrl}?url=${link}`;
-    const res = await axios.get(linkFormatter, {
-      headers: {
-        Accept: "aplication/json",
-      },
-    });
-    return res;
-  } catch (e) {
-    console.log(`${e} error`);
-  }
+export default async function getLink(link) {
+  const API_KEY = process.env.REACT_APP_API_KEY;
+  // This is the API call to short.io
+  const options = {
+    method: 'POST', // The method is POST
+    headers: {
+      accept: 'application/json',
+      'content-type': 'application/json',
+      Authorization: API_KEY
+    },
+    body: JSON.stringify({domain: 'c0c1.short.gy', originalURL: link})
+  };
+  console.log(process.env.REACT_APP_API_KEY);
+  
+  const response = await fetch('https://api.short.io/links', options)
+    .then(response => response.json())
+    .catch(err => console.error(err));
+  console.log(response);
+  return response;
 }
