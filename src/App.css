@@ -6,6 +6,7 @@
   text-align: center;
   background-image: url(./img/background.svg);
   background-position: center;
+  background-size: cover;
 }
 
 /* Container Style */
