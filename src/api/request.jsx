@@ -11,13 +11,12 @@ const options = {
 	},
   mode: 'cors',
 	body: new URLSearchParams({
-		url: 'https://google.com/'
+		url: link
 	})
 };
   
   const response = await fetch(url, options)
     .then(response => response.json())
     .catch(err => console.error(err));
-  
-  return response;
+  return response.result_url;
 }
