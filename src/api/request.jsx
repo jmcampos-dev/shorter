@@ -6,9 +6,10 @@ export default async function getLink(link) {
     headers: {
       accept: 'application/json',
       'content-type': 'application/json',
-      Authorization: API_KEY
+      Authorization: API_KEY,
+      mode: 'cors',
     },
-    body: JSON.stringify({domain: 'c0c1.short.gy', originalURL: link})
+    body: JSON.stringify({domain: 'c0c1.short.gy', originalURL: link}),
   };
   
   const response = await fetch('https://api.short.io/links', options)
